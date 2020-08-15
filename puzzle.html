@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    img{
+        width: 200px;
+        height: 200px;
+        text-align: center;
+    }
+</style>
+<img id="img1" onclick="clickImg(1)" src="images/anh1.jpg" alt="1">
+<img id="img2" onclick="clickImg(2)" src="images/anh1.jpg" alt="1">
+<img id="img3" onclick="clickImg(3)" src="images/anh2.jpg" alt="2">
+<img id="img4" onclick="clickImg(4)" src="images/anh3.jpg" alt="3">
+<img id="img5" onclick="clickImg(5)" src="images/anh2.jpg" alt="2">
+<script>
+    function clickImg(num) {
+        let img = document.getElementById("img"+num);
+        let count = Number(img.alt);
+        count = Math.floor(Math.random()*4+1);
+        img.alt = count;
+        img.src = "images/anh"+ count + ".jpg";
+        checkWin();
+    }
+    function checkWin() {
+        if(getImg(1).alt === getImg(2).alt && getImg(2).alt === getImg(3).alt && getImg(3).alt === getImg(4).alt&& getImg(4).alt === getImg(5).alt){
+            setTimeout(function () {
+                alert("You win");
+            },100);
+
+        }
+    }
+
+    function getImg(index) {
+        return document.getElementById("img"+index);
+    }
+</script>
+</body>
+</html>
